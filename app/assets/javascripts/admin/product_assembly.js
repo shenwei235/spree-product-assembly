@@ -3,19 +3,20 @@
  * https://github.com/spree/spree-product-assembly
  *
  */
-
-$("#searchtext").keypress(function (e) {
-  if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+$(document).ready(function(){
+  $("#sps_searchtext").keypress(function (e) {
+    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+      search_for_parts();
+      return false;
+    } else {
+       return true;
+    }
+  });
+  
+  $("#sps_searchtext").delayedObserver(function(element, value) {
     search_for_parts();
-    return false;
-  } else {
-     return true;
-  }
+  }, 0.75);
 });
-
-$("#searchtext").delayedObserver(function(element, value) {
-  search_for_parts();
-}, 0.75);
 
 function subscribe_product_part_links()
 {
